@@ -1,4 +1,4 @@
-#!/usr/bin/env -S ts-node
+#!/usr/bin/env ts-node
 console.log("Hello, world!");
 
 // This is an industrial-grade general-purpose greeter function:
@@ -7,3 +7,6 @@ function greet(person: string, date: Date) {
 }
 
 greet("Brendan", new Date());
+
+let msg = "hello there!";
+console.log(msg);
