@@ -1,0 +1,15 @@
+{
+  "author": "Linus Fernandes",
+  "dependencies": {
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "description": "",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "learntypescript",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}
