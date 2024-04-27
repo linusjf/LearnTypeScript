@@ -97,10 +97,12 @@ multiplyValue({value : null}, 5);
 multiplyValue({value : undefined}, 5);
 
 type Fish = {
-  swim: () => void
+  swim: () => void,
+  name: string
 };
 type Bird = {
-  fly: () => void
+  fly: () => void,
+  name: string
 };
 
 function move(animal: Fish|Bird) {
@@ -139,3 +141,37 @@ z = 1;
 console.log(z);
 z = "goodbye!";
 console.log(z);
+
+function isFish(pet: Fish|Bird): pet is Fish {
+  return (pet as Fish).swim !== undefined;
+}
+
+function getSmallPet(): Fish|Bird {
+  return {swim : () => { console.log("Swim"); }, "name" : "sharkey"};
+}
+// Both calls to 'swim' and 'fly' are now okay.
+let pet = getSmallPet();
+
+if (isFish(pet)) {
+  pet.swim();
+} else {
+  pet.fly();
+}
+
+const zoo: (Fish|Bird)[] = [ getSmallPet(), getSmallPet(), getSmallPet() ];
+const underWater1: Fish[] = zoo.filter(isFish);
+// or, equivalently
+const underWater2: Fish[] = zoo.filter(isFish) as Fish[];
+
+// The predicate may need repeating for more complex examples
+const underWater3: Fish[] = zoo.filter((pet): pet is Fish => {
+  if (pet.name === "sharkey")
+    return false;
+  return isFish(pet);
+});
+
+interface Shape {
+  kind: "circle"|"square";
+  radius?: number;
+  sideLength?: number;
+}
