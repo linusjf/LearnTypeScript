@@ -33,3 +33,16 @@ function printAll(strs: string|string[]|null) {
 printAll("Hello");
 printAll(null);
 printAll([ "gh", "ch", "es" ]);
+
+function multiplyAll(values: number[]|undefined, factor: number): number[]|
+    undefined {
+  if (!values) {
+    return values;
+  } else {
+    return values.map((x) => x * factor);
+  }
+}
+
+console.log(multiplyAll(undefined, 2));
+console.log(multiplyAll([ 10 ], 2));
+console.log(multiplyAll([ 2, 3 ], 4));
