@@ -4,9 +4,9 @@ interface Point2D {
   y: number;
 }
 
-function printCoord(pt: Point2D) {
+function printCoord2D(pt: Point2D) {
   console.log("The coordinate's x value is " + pt.x);
   console.log("The coordinate's y value is " + pt.y);
 }
 
-printCoord({x : 100, y : 100});
+printCoord2D({x : 100, y : 100});
