@@ -19,3 +19,17 @@ function getUsersOnlineMessage(numUsersOnline: number) {
 
 console.log(getUsersOnlineMessage(0));
 console.log(getUsersOnlineMessage(5));
+
+function printAll(strs: string|string[]|null) {
+  if (strs && typeof strs === "object") {
+    for (const s of strs) {
+      console.log(s);
+    }
+  } else if (typeof strs === "string") {
+    console.log(strs);
+  }
+}
+
+printAll("Hello");
+printAll(null);
+printAll([ "gh", "ch", "es" ]);
