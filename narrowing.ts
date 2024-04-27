@@ -133,3 +133,9 @@ function logValue(x: Date|string) {
 
 logValue(new Date());
 logValue("Test");
+
+let z = Math.random() < 0.5 ? 10 : "hello world!";
+z = 1;
+console.log(z);
+z = "goodbye!";
+console.log(z);
