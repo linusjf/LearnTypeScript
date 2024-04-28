@@ -188,5 +188,8 @@ function getArea(shape: Shape) {
     return Math.PI * shape.radius ** 2;
   case "square":
     return shape.sideLength ** 2;
+  default:
+    const _exhaustiveCheck: never = shape;
+    return _exhaustiveCheck;
   }
 }
