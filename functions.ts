@@ -221,3 +221,32 @@ type ABC = {
   a: number; b : number; c : number
 };
 function sumup({a, b, c}: ABC) { console.log(a + b + c); }
+
+type voidFunc = () => void;
+
+const f4: voidFunc = () => { return true; };
+
+const f2: voidFunc = () => true;
+
+const f3: voidFunc = function() { return true; };
+
+const v1 = f4();
+
+const v2 = f2();
+
+const v3 = f3();
+
+const src = [ 1, 2, 3 ];
+const dst = [ 0 ];
+
+src.forEach((el) => dst.push(el));
+
+function f5(): void {
+  // @ts-expect-error
+  return true;
+}
+
+const f6 = function(): void {
+  // @ts-expect-error
+  return true;
+};
