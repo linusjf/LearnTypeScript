@@ -68,3 +68,24 @@ const longer = longest([ 1, 2 ], "bob");
 console.log(longer);
 // Error! Numbers don't have a 'length' property
 // const notOK = longest(10, 100);
+function minimumLength<Type extends {length : number}>(obj: Type,
+                                                       minimum: number): Type|{
+  length: number
+}
+{
+  if (obj.length >= minimum) {
+    return obj;
+  } else {
+    return {length : minimum};
+  }
+}
+
+console.log(minimumLength<String>("hello", 10));
+console.log(minimumLength<String>("hello", 3));
+
+function combine<Type>(arr1: Type[], arr2: Type[]): Type[] {
+  return arr1.concat(arr2);
+}
+
+const arr = combine<string|number>([ 1, 2, 3 ], [ "hello" ]);
+console.log(arr);
