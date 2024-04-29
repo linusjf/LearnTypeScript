@@ -155,3 +155,43 @@ const user = {
   admin : false,
   becomeAdmin : function() { this.admin = true; },
 };
+
+interface User {
+  id: number, admin: boolean
+}
+interface DB {
+  filterUsers(filter: (this: User) => boolean): User[];
+}
+
+interface DB {
+  filterUsers(filter: (this: User) => boolean): User[];
+}
+
+function getDB(): DB { return <DB>{}; }
+const db = getDB();
+const admins = db.filterUsers(function(this: User) { return this.admin; });
+
+// The inferred return type is void
+function noop() { return; }
+
+function f1(a: any) {
+  a.b(); // OK
+}
+
+function safeParse(s: string): unknown { return JSON.parse(s); }
+
+// Need to be careful with 'obj'!
+const someRandomString = "adbghthryy";
+const objs = safeParse(someRandomString);
+
+function fail(msg: string): never { throw new Error(msg); }
+
+function dosm(x: string|number) {
+  if (typeof x === "string") {
+    // do something
+  } else if (typeof x === "number") {
+    // do something else
+  } else {
+    x; // has type 'never'!
+  }
+}
