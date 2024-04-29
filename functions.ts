@@ -195,3 +195,29 @@ function dosm(x: string|number) {
     x; // has type 'never'!
   }
 }
+
+function doing(f: Function) { return f(1, 2, 3); }
+
+function multiply(n: number, ...m: number[]) { return m.map((x) => n * x); }
+// 'res' gets value [10, 20, 30, 40]
+const res = multiply(10, 1, 2, 3, 4);
+
+const arr1 = [ 1, 2, 3 ];
+const arr2 = [ 4, 5, 6 ];
+arr1.push(...arr2);
+
+// Inferred type is number[] -- "an array with zero or more numbers",
+// not specifically two numbers
+const args = [ 8, 5 ] as const;
+const angle = Math.atan2(...args);
+
+function sum({a, b, c}: {a: number, b: number, c: number}) {
+  console.log(a + b + c);
+}
+sum({a : 10, b : 3, c : 9});
+
+// Same as prior example
+type ABC = {
+  a: number; b : number; c : number
+};
+function sumup({a, b, c}: ABC) { console.log(a + b + c); }
